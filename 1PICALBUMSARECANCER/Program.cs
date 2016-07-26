@@ -11,7 +11,7 @@ namespace _1PICALBUMSARECANCER
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Input Client ID");
+            Console.WriteLine("Input Client ID, It is also known as an application ID");
             string ID = Console.ReadLine();
             var imgur = new Imgur(new ImgurNet.Authentication.ClientAuthentication(ID, true));
             var galleryEndpoint = new ImgurNet.ApiEndpoints.AlbumEndpoint(imgur);
