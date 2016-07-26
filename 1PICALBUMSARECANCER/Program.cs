@@ -39,7 +39,7 @@ namespace _1PICALBUMSARECANCER
                         continue;
                     if ("imgur.com/a/".Contains(post.Url.ToString()))
                     {
-                        string album = System.Text.RegularExpressions.Regex.Replace(post.Url.ToString(), @"https*://.imgur\.com/a/", "");
+                        string album = System.Text.RegularExpressions.Regex.Replace(post.Url.ToString(), @"https*://.imgur\.com/a/", ""); //PLEASE REPORT TO ME IF THIS WORKS
                         if (galleryEndpoint.GetAlbumDetailsAsync(album).Result.Data.ImagesCount == 1)
                         {
                             post.Comment("#s");
