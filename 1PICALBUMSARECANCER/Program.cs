@@ -37,6 +37,7 @@ namespace _1PICALBUMSARECANCER
             {
                 foreach (var post in main.New.Take(25))
                 {
+                    Console.Title = "Searching /r/all";
                     if (alreadySeen.Contains(post.Id))
                         continue;
                     if ("imgur.com/a/".Contains(post.Url.ToString()))
@@ -44,7 +45,7 @@ namespace _1PICALBUMSARECANCER
                         string album = System.Text.RegularExpressions.Regex.Replace(post.Url.ToString(), @"https*://.imgur\.com/a/", ""); //PLEASE REPORT TO ME IF THIS WORKS
                         if (galleryEndpoint.GetAlbumDetailsAsync(album).Result.Data.ImagesCount == 1)
                         {
-                            
+                            Console.Title = "Searching imgur to see if it is a 1 post album";
 
                             if(!exclusions.ToList().Contains(post.Subreddit))
                             {
@@ -52,8 +53,10 @@ namespace _1PICALBUMSARECANCER
                             }
                         }
                     }
+                    Console.WriteLine("Adding ID so no reposts");
                     alreadySeen.Add(post.Id);
                     File.WriteAllLines("./seen.txt", alreadySeen);
+                    
                 }
             }
         }
