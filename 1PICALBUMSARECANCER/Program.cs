@@ -31,6 +31,8 @@ namespace _1PICALBUMSARECANCER
             {
                 alreadySeen = new List<string>();
             }
+            // To add a subreddit to filter from, add it to this list of items, an example would be say, "aww", "The_Donald", for example, I added two to show you the syntax
+            Subreddit[] exclusions = new Subreddit[] { reddit.GetSubreddit("aww"), reddit.GetSubreddit("The_Donald") };
             while (true)
             {
                 foreach (var post in main.New.Take(25))
@@ -42,7 +44,12 @@ namespace _1PICALBUMSARECANCER
                         string album = System.Text.RegularExpressions.Regex.Replace(post.Url.ToString(), @"https*://.imgur\.com/a/", ""); //PLEASE REPORT TO ME IF THIS WORKS
                         if (galleryEndpoint.GetAlbumDetailsAsync(album).Result.Data.ImagesCount == 1)
                         {
-                            post.Comment("#s");
+                            
+
+                            if(!exclusions.ToList().Contains(post.Subreddit))
+                            {
+                                post.Comment("#s");
+                            }
                         }
                     }
                     alreadySeen.Add(post.Id);
