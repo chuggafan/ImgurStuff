@@ -74,7 +74,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="stuff.bat" />
+    <None Include="Stuff %282%29.bat" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="nuget.exe" />
