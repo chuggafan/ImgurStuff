@@ -35,14 +35,16 @@ namespace _1PICALBUMSARECANCER
             Subreddit[] exclusions = new Subreddit[] { reddit.GetSubreddit("aww"), reddit.GetSubreddit("The_Donald") };
             while (true)
             {
-                foreach (var post in main.New.Take(25))
+                foreach (var post in main.New.Take(100))
                 {
                     Console.Title = "Searching /r/all";
                     if (alreadySeen.Contains(post.Id))
                         continue;
-                    if ("imgur.com/a/".Contains(post.Url.ToString()))
+                    if ("imugr".Contains(post.Url.ToString()))
                     {
-                        string album = System.Text.RegularExpressions.Regex.Replace(post.Url.ToString(), @"https*://.imgur\.com/a/", ""); //PLEASE REPORT TO ME IF THIS WORKS
+                        Console.WriteLine($"{post.Id} is an imgur link and it's link is {post.Url.ToString()}");
+                        string album = post.Url.ToString().Substring(post.Url.ToString().LastIndexOf('/'));
+                       
                         if (galleryEndpoint.GetAlbumDetailsAsync(album).Result.Data.ImagesCount == 1)
                         {
                             Console.Title = "Searching imgur to see if it is a 1 post album";
