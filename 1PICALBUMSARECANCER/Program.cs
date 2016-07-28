@@ -37,6 +37,7 @@ namespace _1PICALBUMSARECANCER
             {
                 foreach (var post in main.New.Take(100))
                 {
+                    Console.WriteLine("Found " + post.Url + " in " + post.Id + " as a link");
                     Console.Title = "Searching /r/all";
                     if (alreadySeen.Contains(post.Id))
                         continue;
