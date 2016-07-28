@@ -42,7 +42,7 @@ namespace _1PICALBUMSARECANCER
                         continue;
                     if ("imugr".Contains(post.Url.ToString()))
                     {
-                        Console.WriteLine($"{post.Id} is an imgur link and it's link is {post.Url.ToString()}");
+                        Console.WriteLine(post.Id +  "is an imgur link and it's link is" + post.Url.ToString());
                         string album = post.Url.ToString().Substring(post.Url.ToString().LastIndexOf('/'));
                        
                         if (galleryEndpoint.GetAlbumDetailsAsync(album).Result.Data.ImagesCount == 1)
